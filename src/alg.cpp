@@ -28,39 +28,37 @@ int countPairs2(int *arr, int len, int value) {
   }
   return pairs;
 }
-int countPairs3(int *arr, int len, int value) {
-  int pairs = 0;
-  int q = len - 1;
-  for (int i = 0; i < len - 1; i++) {
-    bool res = false;
-    int l = i + 1;
-    int mid = (l + q) / 2;
-    while (l <= q) {
-      if (arr[i] + arr[mid] == value) {
-        pairs++;
-        res = true;
-        break;
-      } else { if (arr[mid] > value - arr[i]) {
-        q = mid - 1;
-      }
-      } else { if (arr[mid] < value - arr[i]) {
-        l = mid + 1;
-      }
-      }
-      mid = (l + q) / 2;
+int countPairs3(int* arr, int len, int value) {
+    int res = 0;
+    int l = 0;
+    int r = len - 1;
+    int mid = 0;
+    int count = 0;
+    while (l < r - 1) {
+        mid = (l + r) / 2;
+        if (arr[mid] < value) {
+            r = mid;
+        } else {
+            l = mid;
+        }
     }
-    int cur1 = mid;
-    int cur2 = mid;
-    if (res == true) {
-      while (arr[cur1 - 1] == arr[mid] && cur1 - 1 != i) {
-        pairs++;
-        cur1--;
-      }
-      while (arr[cur2 + 1] == arr[mid]) {
-        pairs++;
-        cur2++;
-      }
+    len = r - 1;
+    for (int i = 0; i < len; i++) {
+        l = i + 1, r = len - 1;
+        count = 0;
+        while (l < r) {
+            middle = (l + r) / 2;
+            if (arr[mid] < (value - arr[i])) {
+                l = mid + 1;
+            } else {
+                r = mid;
+            }
+        }
+        while (arr[left] == (value - arr[i])) {
+            count++;
+            l++;
+        }
+        res += count;
     }
-  }
-  return pairs;
+    return res;
 }
