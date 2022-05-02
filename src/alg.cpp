@@ -39,8 +39,7 @@ int countPairs3(int* arr, int len, int value) {
         mid = (l + r) / 2;
         if (arr[mid] < value) {
             r = mid;
-        }
-        else {
+        } else {
             l = mid;
         }
     }
@@ -52,8 +51,7 @@ int countPairs3(int* arr, int len, int value) {
             mid = (l + r) / 2;
             if (arr[mid] < (value - arr[i])) {
                 l = mid + 1;
-            }
-            else {
+            } else {
                 r = mid;
             }
         }
