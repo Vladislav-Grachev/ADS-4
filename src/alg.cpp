@@ -40,10 +40,10 @@ int countPairs3(int *arr, int len, int value) {
         pairs++;
         res = true;
         break;
-      }else{ if (arr[mid] > value - arr[i]) {
+      } else { if (arr[mid] > value - arr[i]) {
         q = mid - 1;
       }
-      }else{ if (arr[mid] < value - arr[i]) {
+      } else { if (arr[mid] < value - arr[i]) {
         l = mid + 1;
       }
       }
