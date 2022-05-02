@@ -1,32 +1,31 @@
-// Copyright 2021 NNTU-CS
-int countPairs1(int *arr, int len, int value) {
-  int pairs = 0;
-  for (int i = 0; i < len - 1; i++) {
-    for (int j = i + 1; j < len; j++) {
-      if (arr[i] + arr[j] == value)
-        pairs++;
+int countPairs1(int* arr, int len, int value) {
+    int res = 0;
+    for (int i = 0; i < len - 1; i++) {
+        for (int j = i + 1; j < len; j++) {
+            if (arr[i] + arr[j] == value)
+                res++;
+        }
     }
-  }
-  return pairs;
+    return res;
 }
-int countPairs2(int *arr, int len, int value) {
-  int pairs = 0;
-  int l = len;
-  int q = len - 1;
-  for (int x = len - 1; arr[l] > value; l--)
-    q--;
-  for (int i = 0; i <= len; i++) {
-    if (arr[i] > value / 2)
-      break;
-    for (int j = q; j > i; j--) {
-      if (arr[i] + arr[j] == value) {
-        pairs++;
-      }
-      if (arr[i] + arr[j] < value)
-        break;
+
+int countPairs2(int* arr, int len, int value) {
+    int res = 0;
+    int r = len - 1;
+    for (int end = len - 1; arr[end] > value; end--)
+        r--;
+    for (int i = 0; i <= len; i++) {
+        if (arr[i] > value / 2)
+            break;
+        for (int j = r; j > i; j--) {
+            if (arr[i] + arr[j] == value) {
+                r++;
+            }
+            if (arr[i] + arr[j] < value)
+                break;
+        }
     }
-  }
-  return pairs;
+    return r;
 }
 int countPairs3(int* arr, int len, int value) {
     int res = 0;
